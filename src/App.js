@@ -1,14 +1,14 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
+
+import Dashboard from './components/dashboard/dashboard.component'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-      </header>
+      <Dashboard />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

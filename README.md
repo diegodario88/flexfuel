@@ -1,8 +1,8 @@
 <p align="center"> 
-<img src="./public/apple-touch-icon-152x152.png" width="auto" align="center" href="https://github.com/diegodario88" />
+<img src="./public/apple-touch-icon-152x152.png" width="auto" align="center" href="https://flexfu3l.web.app/" />
 </p>
 <h1 align="center">FlexFuel</h1>
-<p align="center">Projeto faz parte da meta <strong>Complete React Developer in 2020</strong>, desenvolvido durante a pandemia <a href="https://herokuapp.com/">Visitar o projeto</a> 🚀👩🏽‍🚀</p>
+<p align="center">Projeto faz parte da meta <strong>Complete React Developer in 2020</strong>, desenvolvido durante a pandemia <a href="https://flexfu3l.web.app/">Visitar o projeto</a> 🚀👩🏽‍🚀</p>
 <p align="center">
 <a href="https://github.com/diegodario88">
     <img alt="Made by DiegoDario" src="https://img.shields.io/badge/made%20by-DiegoDario-%237159C1">
@@ -48,6 +48,6 @@ Depois que o merge da sua pull request for feito, você pode deletar a sua branc
 
 ## :memo: Licença
 
-Esse projeto está sob a licença GNU. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+Esse projeto está sob a licença GNU. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
