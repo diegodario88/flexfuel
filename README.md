@@ -1,5 +1,8 @@
 <p align="center"> 
-<img src="./public/apple-touch-icon-152x152.png" width="auto" align="center" href="https://flexfu3l.web.app/" />
+<img src="./demo.gif" width="auto" align="center" href="https://flexfu3l.web.app/" />
+</p>
+<p align="center"> 
+<img src="./public/apple-touch-icon-60x60.png" width="auto" align="center" href="https://flexfu3l.web.app/" />
 </p>
 <h1 align="center">FlexFuel</h1>
 <p align="center">Projeto faz parte da meta <strong>Complete React Developer in 2020</strong>, desenvolvido durante a pandemia <a href="https://flexfu3l.web.app/">Visitar o projeto</a> 🚀👩🏽‍🚀</p>
