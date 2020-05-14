@@ -9,16 +9,16 @@ import TableRow from '@material-ui/core/TableRow'
 import Title from '../title/title.component'
 
 // Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount }
+function createData(id, price, station, name) {
+  return { id, price, station, name }
 }
 
 const rows = [
-  createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719', 312.44),
-  createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574', 866.99),
-  createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-  createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000', 654.39),
-  createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79)
+  createData(0, 3.63, 'B. BRANCA', 'POSTO SAO MATHEUS'),
+  createData(1, 3.63, 'RODOIL', 'EMIVE AUTO POSTO'),
+  createData(2, 3.72, 'B. BRANCA', 'AUTO POSTO LOANDA'),
+  createData(3, 3.79, 'SHELL', 'TORREZAN AUTO POSTO 5'),
+  createData(4, 3.79, 'PETROBRAS', 'BONETTI AUTO POSTO')
 ]
 
 function preventDefault(event) {
@@ -35,32 +35,28 @@ export default function Orders() {
   const classes = useStyles()
   return (
     <React.Fragment>
-      <Title>Recent Orders</Title>
+      <Title>Lista de Preços</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
-            <TableCell>Payment Method</TableCell>
-            <TableCell align="right">Sale Amount</TableCell>
+            <TableCell align="left">Preço</TableCell>
+            <TableCell>Bandeira</TableCell>
+            <TableCell align="left">Posto</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
+              <TableCell align="left">{row.price}</TableCell>
+              <TableCell>{row.station}</TableCell>
+              <TableCell align="left">{row.name}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
-          See more orders
+          Veja mais resultados
         </Link>
       </div>
     </React.Fragment>

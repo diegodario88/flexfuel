@@ -3,68 +3,68 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListSubheader from '@material-ui/core/ListSubheader'
-import DashboardIcon from '@material-ui/icons/Dashboard'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
-import PeopleIcon from '@material-ui/icons/People'
+import LocalGas from '@material-ui/icons/LocalGasStation'
+import Contact from '@material-ui/icons/Contacts'
+import Code from '@material-ui/icons/Code'
 import BarChartIcon from '@material-ui/icons/BarChart'
-import LayersIcon from '@material-ui/icons/Layers'
-import AssignmentIcon from '@material-ui/icons/Assignment'
+import CloudDownloa from '@material-ui/icons/CloudDownload'
+import Info from '@material-ui/icons/Info'
 
 export const mainListItems = (
   <div>
     <ListItem button>
       <ListItemIcon>
-        <DashboardIcon />
+        <LocalGas style={{ fill: 'red' }} />
       </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <ListItemText primary="Gasolina" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <LocalGas style={{ fill: 'green' }} />
       </ListItemIcon>
-      <ListItemText primary="Orders" />
+      <ListItemText primary="Etanol" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <PeopleIcon />
+        <LocalGas style={{ fill: 'yellow' }}/>
       </ListItemIcon>
-      <ListItemText primary="Customers" />
+      <ListItemText primary="Diesel" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText primary="Gráficos" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <LayersIcon />
+        <CloudDownloa />
       </ListItemIcon>
-      <ListItemText primary="Integrations" />
+      <ListItemText primary="Downloads" />
     </ListItem>
   </div>
 )
 
 export const secondaryListItems = (
   <div>
-    <ListSubheader inset>Saved reports</ListSubheader>
+    <ListSubheader inset>Links</ListSubheader>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <Code />
       </ListItemIcon>
-      <ListItemText primary="Current month" />
+      <ListItemText primary="Código" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <Contact />
       </ListItemIcon>
-      <ListItemText primary="Last quarter" />
+      <ListItemText primary="Contato" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <Info />
       </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
+      <ListItemText primary="Informações" />
     </ListItem>
   </div>
 )

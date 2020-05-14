@@ -17,10 +17,10 @@ import Paper from '@material-ui/core/Paper'
 import Link from '@material-ui/core/Link'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import NotificationsIcon from '@material-ui/icons/Notifications'
+import Refresh from '@material-ui/icons/SystemUpdate'
 import { mainListItems, secondaryListItems } from '../list-item/list-item.component'
 import Chart from '../chart/chart.component'
-import Deposits from '../deposits/deposits.component'
+import Sales from '../sales/sales.component'
 import Orders from '../orders/orders.component'
 
 function Copyright() {
@@ -28,7 +28,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Diego Dario
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles()
-  const [open, setOpen] = React.useState(true)
+  const [open, setOpen] = React.useState(false)
   const handleDrawerOpen = () => {
     setOpen(true)
   }
@@ -143,11 +143,11 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            FlexFuel
           </Typography>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
+            <Badge badgeContent={1} color="secondary">
+              <Refresh />
             </Badge>
           </IconButton>
         </Toolbar>
@@ -173,16 +173,16 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
+            {/* Recent Sales */}
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <Sales />
+              </Paper>
+            </Grid>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
                 <Chart />
-              </Paper>
-            </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits />
               </Paper>
             </Grid>
             {/* Recent Orders */}
