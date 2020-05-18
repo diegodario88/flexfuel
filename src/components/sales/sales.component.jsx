@@ -3,33 +3,51 @@ import Link from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Title from '../title/title.component'
-
-function preventDefault(event) {
-  event.preventDefault()
-}
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles({
-  depositContext: {
+  salesContext: {
     flex: 1
+  },
+  img: {
+    width: '100px',
+    height: '80px'
   }
 })
 
-export default function Sales() {
+export default function Sales({ price, station, date, fuelType, location, logo }) {
   const classes = useStyles()
+
   return (
     <React.Fragment>
-      <Title>Venda Recente</Title>
+      <Title>Melhor Valor</Title>
       <Typography component="p" variant="h4">
-        R$ 3.63
+        R$ {price}
       </Typography>
-      <Typography color="textSecondary" className={classes.depositContext}>
-        em 14/05/2020 às 16:31
+      <Typography color="textSecondary" className={classes.salesContext}>
+        {fuelType}
       </Typography>
       <div>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          Ver mapa
+        <Typography component="p">
+          {station}
+        </Typography>
+        <img className={classes.img} alt='logo' src={require(`../../assets/brands/${logo}.png`)} />
+        <Typography color="textSecondary" className={classes.salesContext}>
+        em {date}
+        </Typography>
+        <Link color="primary" href={`geo:${location}`}>
+          Ver no mapa 🗺
         </Link>
       </div>
     </React.Fragment>
   )
+}
+
+Sales.propTypes = {
+  price: PropTypes.string,
+  station: PropTypes.string,
+  date: PropTypes.string,
+  fuelType: PropTypes.string,
+  logo: PropTypes.string,
+  location: PropTypes.string
 }

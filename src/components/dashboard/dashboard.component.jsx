@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
@@ -22,12 +23,15 @@ import { mainListItems, secondaryListItems } from '../list-item/list-item.compon
 import Chart from '../chart/chart.component'
 import Sales from '../sales/sales.component'
 import Orders from '../orders/orders.component'
+import moment from 'moment'
+import makeUrlForGoogleMaps from '../../utils/string-utils'
+import DataProvider from '../../utils/data-provider'
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="https://github.com/diegodario88">
         Diego Dario
       </Link>{' '}
       {new Date().getFullYear()}
@@ -35,6 +39,14 @@ function Copyright() {
     </Typography>
   )
 }
+
+const { estabelecimento: { nm_fan, nm_emp, tp_logr, nm_logr, nr_logr, mun, uf } } = DataProvider()
+const { datahora, valor, desc } = DataProvider()
+const stationAddress = `${tp_logr} ${nm_logr}, ${nr_logr} ${mun}-${uf}`
+const getBrandName = index => name => name.split('-')[index]
+const getFirstBrandName = getBrandName(0)
+const getSecondBrandName = getBrandName(1)
+const removeSpace = name => name.replace(' ', '')
 
 const drawerWidth = 240
 
@@ -112,8 +124,11 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     flexDirection: 'column'
   },
+  fixedMainHeight: {
+    height: 285
+  },
   fixedHeight: {
-    height: 240
+    height: 230
   }
 }))
 
@@ -127,6 +142,7 @@ export default function Dashboard() {
     setOpen(false)
   }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
+  const fixedMainHeightPaper = clsx(classes.paper, classes.fixedMainHeight)
 
   return (
     <div className={classes.root}>
@@ -173,10 +189,16 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Recent Sales */}
             <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Sales />
+              <Paper className={fixedMainHeightPaper}>
+                <Sales
+                  price={valor}
+                  date={moment(datahora).format('DD/MM/YYYY, h:mm a')}
+                  fuelType={desc}
+                  station={getSecondBrandName(nm_fan || nm_emp)}
+                  location={makeUrlForGoogleMaps(nm_fan, stationAddress)}
+                  logo={removeSpace(getFirstBrandName(nm_fan || nm_emp).toLowerCase().trim())}
+                />
               </Paper>
             </Grid>
             {/* Chart */}
