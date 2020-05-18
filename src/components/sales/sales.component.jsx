@@ -2,7 +2,7 @@ import React from 'react'
 import Link from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import Title from '../title/title.component'
+import MapIcon from '@material-ui/icons/Map'; import Title from '../title/title.component'
 import PropTypes from 'prop-types'
 
 const useStyles = makeStyles({
@@ -36,7 +36,7 @@ export default function Sales({ price, station, date, fuelType, location, logo }
         em {date}
         </Typography>
         <Link color="primary" href={`geo:${location}`}>
-          Ver no mapa 🗺
+          Ver no mapa <MapIcon />
         </Link>
       </div>
     </React.Fragment>

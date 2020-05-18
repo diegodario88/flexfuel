@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Chart from '../chart/chart.component'
 import Sales from '../sales/sales.component'
-import Orders from '../table-price/table-price.component'
+import TablePrice from '../table-price/table-price.component'
 import Footer from '../footer/footer.component'
 import moment from 'moment'
 import { makeUrlForGoogleMaps, getFirstBrandName, getSecondBrandName, removeSpace } from '../../utils/string-utils'
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(4)
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column'
@@ -33,7 +33,10 @@ const useStyles = makeStyles((theme) => ({
     height: 295
   },
   fixedHeight: {
-    height: 230
+    height: 240,
+    [theme.breakpoints.up('md')]: {
+      height: 295
+    }
   }
 }))
 
@@ -65,7 +68,7 @@ export default function Dashboard() {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <Orders />
+            <TablePrice />
           </Paper>
         </Grid>
       </Grid>

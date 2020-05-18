@@ -5,7 +5,6 @@ function getRandomIntInclusive(min, max) {
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
-console.log(getRandomIntInclusive(0, 10))
 
 const bestPrice = () => data.produtos[getRandomIntInclusive(0, 10)]
 
