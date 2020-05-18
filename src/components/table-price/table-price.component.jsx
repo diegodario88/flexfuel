@@ -39,17 +39,15 @@ export default function Orders() {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell align="left">Preço</TableCell>
-            <TableCell>Bandeira</TableCell>
-            <TableCell align="left">Posto</TableCell>
+            <TableCell>Preço</TableCell>
+            <TableCell>Posto</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
-              <TableCell align="left">{row.price}</TableCell>
-              <TableCell>{row.station}</TableCell>
-              <TableCell align="left">{row.name}</TableCell>
+              <TableCell>{row.price}</TableCell>
+              <TableCell>{row.name}</TableCell>
             </TableRow>
           ))}
         </TableBody>

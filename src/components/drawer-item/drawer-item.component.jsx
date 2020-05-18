@@ -2,7 +2,6 @@ import React from 'react'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import ListSubheader from '@material-ui/core/ListSubheader'
 import LocalGas from '@material-ui/icons/LocalGasStation'
 import Contact from '@material-ui/icons/Contacts'
 import Code from '@material-ui/icons/Code'
@@ -47,7 +46,6 @@ export const mainListItems = (
 
 export const secondaryListItems = (
   <div>
-    <ListSubheader inset>Links</ListSubheader>
     <ListItem button>
       <ListItemIcon>
         <Code />
