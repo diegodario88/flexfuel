@@ -86,7 +86,10 @@ const rows = [
   createData(6, 3.63, 'RODOIL', 'EMIVE AUTO POSTO'),
   createData(7, 3.72, 'B. BRANCA', 'AUTO POSTO LOANDA'),
   createData(8, 3.79, 'SHELL', 'TORREZAN AUTO POSTO 5'),
-  createData(9, 3.79, 'PETROBRAS', 'BONETTI AUTO POSTO')
+  createData(9, 3.79, 'PETROBRAS', 'BONETTI AUTO POSTO'),
+  createData(10, 3.72, 'B. BRANCA', 'AUTO POSTO LOANDA'),
+  createData(11, 3.79, 'SHELL', 'TORREZAN AUTO POSTO 5'),
+  createData(12, 3.79, 'PETROBRAS', 'BONETTI AUTO POSTO')
 ]
 
 const useStyles = makeStyles((theme) => ({
