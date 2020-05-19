@@ -21,13 +21,13 @@ function App() {
   )
 
   return (
-    <div className="App">
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <div className="App">
         <Drawer>
           <Dashboard />
         </Drawer>
-      </ThemeProvider>
-    </div>
+      </div>
+    </ThemeProvider>
   )
 }
 

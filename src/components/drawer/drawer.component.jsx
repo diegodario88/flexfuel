@@ -5,16 +5,14 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import List from '@material-ui/core/List'
 import Typography from '@material-ui/core/Typography'
-import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import { mainListItems, secondaryListItems } from '../drawer-item/drawer-item.component'
+import ListItems from '../drawer-itens/drawer-itens.component'
 import PropTypes from 'prop-types'
 
-const drawerWidth = 240
+const drawerWidth = 200
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -88,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Dashboard({ children }) {
+export default function DrawerComponent({ children }) {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
   const handleDrawerOpen = () => {
@@ -99,8 +97,6 @@ export default function Dashboard({ children }) {
   }
 
   return (
-  //       TODO://theme.breakpoints.up('sm')
-
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -131,10 +127,7 @@ export default function Dashboard({ children }) {
             <ChevronLeftIcon />
           </IconButton>
         </div>
-        <Divider />
-        <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
+        < ListItems />
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
@@ -144,6 +137,6 @@ export default function Dashboard({ children }) {
   )
 }
 
-Dashboard.propTypes = {
+DrawerComponent.propTypes = {
   children: PropTypes.element
 }

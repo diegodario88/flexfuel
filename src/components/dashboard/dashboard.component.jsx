@@ -11,12 +11,11 @@ import Sales from '../sales/sales.component'
 import TablePrice from '../table-price/table-price.component'
 import Footer from '../footer/footer.component'
 import moment from 'moment'
-import { makeUrlForGoogleMaps, getFirstBrandName, getSecondBrandName, removeSpace } from '../../utils/string-utils'
-import DataProvider from '../../utils/data-provider'
-
-const { estabelecimento: { nm_fan, nm_emp, tp_logr, nm_logr, nr_logr, mun, uf } } = DataProvider()
-const { datahora, valor, desc } = DataProvider()
-const stationAddress = `${tp_logr} ${nm_logr}, ${nr_logr} ${mun}-${uf}`
+import {
+  makeUrlForGoogleMaps,
+  getFirstBrandName, getSecondBrandName, removeSpace
+} from '../../utils/string-utils'
+import bestPrice, { allPrices } from '../../utils/data-provider'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -42,7 +41,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles()
+  const [products] = React.useState(allPrices(0))
+  const [sales] = React.useState(bestPrice(0))
 
+  const {
+    datahora, valor, desc,
+    estabelecimento: { nm_fan, nm_emp, tp_logr, nm_logr, nr_logr, mun, uf }
+  } = sales
+
+  const stationAddress = `${tp_logr} ${nm_logr}, ${nr_logr} ${mun}-${uf}`
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
   const fixedMainHeightPaper = clsx(classes.paper, classes.fixedMainHeight)
 
@@ -68,7 +75,9 @@ export default function Dashboard() {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <TablePrice />
+            <TablePrice
+              data={products}
+            />
           </Paper>
         </Grid>
       </Grid>

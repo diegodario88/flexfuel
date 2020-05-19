@@ -71,42 +71,21 @@ function TablePaginationActions(props) {
     </div>
   )
 }
-// Generate Order Data
-function createData(id, price, station, name) {
-  return { id, price, station, name }
-}
-
-const rows = [
-  createData(0, 3.63, 'B. BRANCA', 'POSTO SAO MATHEUS'),
-  createData(1, 3.63, 'RODOIL', 'EMIVE AUTO POSTO'),
-  createData(2, 3.72, 'B. BRANCA', 'AUTO POSTO LOANDA'),
-  createData(3, 3.79, 'SHELL', 'TORREZAN AUTO POSTO 5'),
-  createData(4, 3.79, 'PETROBRAS', 'BONETTI AUTO POSTO'),
-  createData(5, 3.63, 'B. BRANCA', 'POSTO SAO MATHEUS'),
-  createData(6, 3.63, 'RODOIL', 'EMIVE AUTO POSTO'),
-  createData(7, 3.72, 'B. BRANCA', 'AUTO POSTO LOANDA'),
-  createData(8, 3.79, 'SHELL', 'TORREZAN AUTO POSTO 5'),
-  createData(9, 3.79, 'PETROBRAS', 'BONETTI AUTO POSTO'),
-  createData(10, 3.72, 'B. BRANCA', 'AUTO POSTO LOANDA'),
-  createData(11, 3.79, 'SHELL', 'TORREZAN AUTO POSTO 5'),
-  createData(12, 3.79, 'PETROBRAS', 'BONETTI AUTO POSTO')
-]
 
 const useStyles = makeStyles((theme) => ({
   priceTable: {
     [theme.breakpoints.down('md')]: {
       display: 'none'
-    },
-    display: 'flex'
+    }
   }
 }))
 
-export default function Orders() {
+export default function TablePriceComponent({ data }) {
   const classes = useStyles()
   const [page, setPage] = React.useState(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(5)
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage)
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
@@ -123,27 +102,29 @@ export default function Orders() {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell className={classes.priceTable}>Ordem</TableCell>
+            <TableCell className={classes.priceTable}>Descrição</TableCell>
             <TableCell>Preço</TableCell>
             <TableCell >Posto</TableCell>
-            <TableCell className={classes.priceTable}>Bandeira</TableCell>
+            <TableCell className={classes.priceTable}>Data</TableCell>
+            <TableCell className={classes.priceTable}>Local</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : rows
-          ).map((row) => (
-            <TableRow key={row.id}>
-              <TableCell className={classes.priceTable}>{row.id}</TableCell>
-              <TableCell>{row.price}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell className={classes.priceTable}>{row.station}</TableCell>
+            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : data
+          ).map(({ id, valor, estabelecimento, tempo, desc }) => (
+            <TableRow key={id}>
+              <TableCell className={classes.priceTable}>{desc}</TableCell>
+              <TableCell>{valor}</TableCell>
+              <TableCell>{estabelecimento.nm_fan || estabelecimento.nm_emp}</TableCell>
+              <TableCell className={classes.priceTable}>{tempo}</TableCell>
+              <TableCell className={classes.priceTable}>{estabelecimento.mun}</TableCell>
             </TableRow>
           ))}
 
           {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
+            <TableRow style={{ height: 33 * emptyRows }}>
               <TableCell colSpan={6} />
             </TableRow>
           )}
@@ -152,8 +133,8 @@ export default function Orders() {
           <TableRow>
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, { label: 'Todos', value: -1 }]}
-              colSpan={2}
-              count={rows.length}
+              colSpan={3}
+              count={data.length}
               rowsPerPage={rowsPerPage}
               page={page}
               SelectProps={{
@@ -169,6 +150,10 @@ export default function Orders() {
       </Table>
     </React.Fragment>
   )
+}
+
+TablePriceComponent.propTypes = {
+  data: PropTypes.array
 }
 
 TablePaginationActions.propTypes = {
