@@ -10,6 +10,7 @@ import Code from '@material-ui/icons/Code'
 import BarChartIcon from '@material-ui/icons/BarChart'
 import CloudDownloa from '@material-ui/icons/CloudDownload'
 import Info from '@material-ui/icons/Info'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,12 +24,16 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function FuelList() {
+export default function FuelList(props) {
   const classes = useStyles()
   const [selectedIndex, setSelectedIndex] = React.useState(0)
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index)
+  }
+  const handleFuelListItemClick = (event, index) => {
+    setSelectedIndex(index)
+    props.onclick(index)
   }
 
   return (
@@ -37,7 +42,9 @@ export default function FuelList() {
       <ListItem
         button
         selected={selectedIndex === 0}
-        onClick={(event) => handleListItemClick(event, 0)}
+        onClick={
+          (event) => handleFuelListItemClick(event, 0)
+        }
       >
         <ListItemIcon>
           <LocalGas style={{ fill: 'red' }} />
@@ -47,7 +54,7 @@ export default function FuelList() {
       <ListItem
         button
         selected={selectedIndex === 1}
-        onClick={(event) => handleListItemClick(event, 1)}
+        onClick={(event) => handleFuelListItemClick(event, 1)}
       >
         <ListItemIcon>
           <LocalGas style={{ fill: 'green' }} />
@@ -57,7 +64,7 @@ export default function FuelList() {
       <ListItem
         button
         selected={selectedIndex === 2}
-        onClick={(event) => handleListItemClick(event, 2)}
+        onClick={(event) => handleFuelListItemClick(event, 2)}
       >
         <ListItemIcon>
           <LocalGas style={{ fill: 'yellow' }}/>
@@ -108,4 +115,8 @@ export default function FuelList() {
     </div>
 
   )
+}
+
+FuelList.propTypes = {
+  onclick: PropTypes.func
 }

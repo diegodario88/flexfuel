@@ -10,12 +10,12 @@ import Chart from '../chart/chart.component'
 import Sales from '../sales/sales.component'
 import TablePrice from '../table-price/table-price.component'
 import Footer from '../footer/footer.component'
+import PropTypes from 'prop-types'
 import moment from 'moment'
 import {
   makeUrlForGoogleMaps,
   getFirstBrandName, getSecondBrandName, removeSpace
 } from '../../utils/string-utils'
-import bestPrice, { allPrices } from '../../utils/data-provider'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -39,10 +39,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Dashboard() {
+export default function Dashboard({ products, sales }) {
   const classes = useStyles()
-  const [products] = React.useState(allPrices(0))
-  const [sales] = React.useState(bestPrice(0))
 
   const {
     datahora, valor, desc,
@@ -86,4 +84,9 @@ export default function Dashboard() {
       </Box>
     </Container>
   )
+}
+
+Dashboard.propTypes = {
+  products: PropTypes.array,
+  sales: PropTypes.object
 }

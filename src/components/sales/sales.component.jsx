@@ -20,7 +20,7 @@ export default function Sales({ price, station, date, fuelType, location, logo }
 
   return (
     <React.Fragment>
-      <Title>Melhor Valor</Title>
+      <Title>Mais Barato</Title>
       <Typography component="p" variant="h4">
         R$ {price}
       </Typography>

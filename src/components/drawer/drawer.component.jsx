@@ -11,6 +11,8 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ListItems from '../drawer-itens/drawer-itens.component'
 import PropTypes from 'prop-types'
+import Dashboard from '../dashboard/dashboard.component'
+import bestPrice, { allPrices } from '../../utils/data-provider'
 
 const drawerWidth = 200
 
@@ -86,9 +88,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function DrawerComponent({ children }) {
+export default function DrawerComponent(props) {
   const classes = useStyles()
+
+  const [sales, setSales] = React.useState(bestPrice(0))
+  const [products, setProducts] = React.useState(allPrices(0))
   const [open, setOpen] = React.useState(false)
+
+  const handleFuelTypeSelected = (position) => {
+    setSales(bestPrice(position))
+    setProducts(allPrices(position))
+  }
   const handleDrawerOpen = () => {
     setOpen(true)
   }
@@ -111,7 +121,7 @@ export default function DrawerComponent({ children }) {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            FlexFuel
+            Melhor Valor Combustível
           </Typography>
         </Toolbar>
       </AppBar>
@@ -127,11 +137,13 @@ export default function DrawerComponent({ children }) {
             <ChevronLeftIcon />
           </IconButton>
         </div>
-        < ListItems />
+        < ListItems onclick={(e) => { handleFuelTypeSelected(e) }} />
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        {children}
+
+        <Dashboard products={products} sales={sales} />
+
       </main>
     </div>
   )

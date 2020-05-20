@@ -1,7 +1,6 @@
 import React from 'react'
 import './App.css'
 
-import Dashboard from './components/dashboard/dashboard.component'
 import Drawer from './components/drawer/drawer.component'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -23,9 +22,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Drawer>
-          <Dashboard />
-        </Drawer>
+        <Drawer />
       </div>
     </ThemeProvider>
   )
