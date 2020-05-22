@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
@@ -39,82 +40,108 @@ export default function DrawerItems(props) {
   return (
     <div className={classes.root}>
       <Divider />
-      <ListItem
-        button
-        selected={selectedIndex === 0}
-        onClick={
-          (event) => handleFuelListItemClick(event, 0, 'gasolina')
-        }
-      >
-        <ListItemIcon>
-          <LocalGas style={{ fill: 'red' }} />
-        </ListItemIcon>
-        <ListItemText primary="Gasolina" />
-      </ListItem>
-      <ListItem
-        button
-        selected={selectedIndex === 1}
-        onClick={(event) => handleFuelListItemClick(event, 1, 'etanol')}
-      >
-        <ListItemIcon>
-          <LocalGas style={{ fill: 'green' }} />
-        </ListItemIcon>
-        <ListItemText primary="Etanol" />
-      </ListItem>
-      <ListItem
-        button
-        selected={selectedIndex === 2}
-        onClick={(event) => handleFuelListItemClick(event, 2, 'diesel')}
-      >
-        <ListItemIcon>
-          <LocalGas style={{ fill: 'yellow' }}/>
-        </ListItemIcon>
-        <ListItemText primary="Diesel" />
-      </ListItem>
+      <Link to='/'>
+        <ListItem
+          button
+          selected={selectedIndex === 0}
+          onClick={
+            (event) => handleFuelListItemClick(event, 0, 'gasolina')
+          }
+        >
+          <ListItemIcon>
+            <LocalGas style={{ fill: 'red' }} />
+          </ListItemIcon>
+          <ListItemText primary="Gasolina" />
+        </ListItem>
+        <ListItem
+          button
+          selected={selectedIndex === 1}
+          onClick={(event) => handleFuelListItemClick(event, 1, 'etanol')}
+        >
+          <ListItemIcon>
+            <LocalGas style={{ fill: 'green' }} />
+          </ListItemIcon>
+          <ListItemText primary="Etanol" />
+        </ListItem>
+        <ListItem
+          button
+          selected={selectedIndex === 2}
+          onClick={(event) => handleFuelListItemClick(event, 2, 'diesel')}
+        >
+          <ListItemIcon>
+            <LocalGas style={{ fill: 'yellow' }}/>
+          </ListItemIcon>
+          <ListItemText primary="Diesel" />
+        </ListItem>
+      </Link>
 
       <Divider className={classes.dividerSpace} />
 
-      <ListItem
-        button
-        selected={selectedIndex === 3}
-        onClick={(event) => handleListItemClick(event, 3)}
-      >
-        <ListItemIcon>
-          <BarChartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Gráficos" />
-      </ListItem>
-      <ListItem
-        button
-        selected={selectedIndex === 4}
-        onClick={(event) => handleListItemClick(event, 4)}
-      >
-        <ListItemIcon>
-          <CloudDownloa />
-        </ListItemIcon>
-        <ListItemText primary="Downloads" />
-      </ListItem>
+      <Link to='/charts'>
+        <ListItem
+          button
+          selected={selectedIndex === 3}
+          onClick={(event) => handleListItemClick(event, 3)}
+        >
+          <ListItemIcon>
+            <BarChartIcon />
+          </ListItemIcon>
+          <ListItemText primary="Gráficos" />
+        </ListItem>
+      </Link>
 
-      <ListItem button>
-        <ListItemIcon>
-          <Code />
-        </ListItemIcon>
-        <ListItemText primary="Código" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <Contact />
-        </ListItemIcon>
-        <ListItemText primary="Contato" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <Info />
-        </ListItemIcon>
-        <ListItemText primary="Informações" />
-      </ListItem>
+      <Link to='/downloads'>
+        <ListItem
+          button
+          selected={selectedIndex === 4}
+          onClick={(event) => handleListItemClick(event, 4)}
+        >
+          <ListItemIcon>
+            <CloudDownloa />
+          </ListItemIcon>
+          <ListItemText primary="Downloads" />
+        </ListItem>
+      </Link>
+
+      <Link to='/code'>
+        <ListItem
+          button
+          selected={selectedIndex === 5}
+          onClick={(event) => handleListItemClick(event, 5)}
+        >
+          <ListItemIcon>
+            <Code />
+          </ListItemIcon>
+          <ListItemText primary="Código" />
+        </ListItem>
+      </Link>
+
+      <Link to='contact'>
+        <ListItem
+          button
+          selected={selectedIndex === 6}
+          onClick={(event) => handleListItemClick(event, 6)}
+        >
+          <ListItemIcon>
+            <Contact />
+          </ListItemIcon>
+          <ListItemText primary="Contato" />
+        </ListItem>
+      </Link>
+
+      <Link to='/info'>
+        <ListItem
+          button
+          selected={selectedIndex === 7}
+          onClick={(event) => handleListItemClick(event, 7)}
+        >
+          <ListItemIcon>
+            <Info />
+          </ListItemIcon>
+          <ListItemText primary="Informações" />
+        </ListItem>
+      </Link>
     </div>
-
   )
 }
 

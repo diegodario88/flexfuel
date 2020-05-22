@@ -5,7 +5,7 @@
 <img src="./public/apple-touch-icon-60x60.png" width="auto" align="center" href="https://flexfu3l.web.app/" />
 </p>
 <h1 align="center">FlexFuel</h1>
-<p align="center">Projeto faz parte da meta <strong>Complete React Developer in 2020</strong>, desenvolvido durante a pandemia <a href="https://flexfu3l.web.app/">Visitar o projeto</a> 🚀👩🏽‍🚀</p>
+<p align="center">Esse é um projeto que faz parte da minha jornada de aprendizado na trilha de desenvolvimento web. A meta, <strong>Complete React Developer in 2020</strong>, começou em janeiro; e como parte do aprendizado é se manter motivado, tenho desenvolvido durante a pandemia pequenos pwa's como este. <a href="https://flexfu3l.web.app/">Visitar o projeto</a></p>
 <p align="center">
 <a href="https://github.com/diegodario88">
     <img alt="Made by DiegoDario" src="https://img.shields.io/badge/made%20by-DiegoDario-%237159C1">
@@ -24,7 +24,7 @@
   <a href="#memo-licença">Licença</a>
 </p>
 
-## 🚀 Instalação e execução
+## Instalação e execução
 
 _ps: Se precisar de ajuda para fazer um clone, esse [tutorial aqui](https://help.github.com/pt/github/creating-cloning-and-archiving-repositories/cloning-a-repository) vai te ajudar 💖_
 
@@ -35,7 +35,7 @@ _ps: Se precisar de ajuda para fazer um clone, esse [tutorial aqui](https://help
 5. Rode `npm install` para instalar as dependências do projeto;
 6. Rode `npm start` para iniciar o servidor de desenvolvimento.
 
-## 🤔 Como contribuir
+## Como contribuir
 
 Se quiser contribuir para esse repositório aqui, seja corrigindo algum problema, adicionando comentários ou melhorando a documentação, você pode seguir esse tutorial abaixo:
 
