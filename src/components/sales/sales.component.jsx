@@ -35,7 +35,7 @@ export default function Sales({ price, station, date, fuelType, location, logo }
         <Typography color="textSecondary" className={classes.salesContext}>
         em {date}
         </Typography>
-        <Link color="primary" href={`geo:${location}`}>
+        <Link color="primary" href={location}>
           Ver no mapa <MapIcon />
         </Link>
       </div>

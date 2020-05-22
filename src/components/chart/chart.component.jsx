@@ -1,23 +1,9 @@
 import React from 'react'
 import { useTheme } from '@material-ui/core/styles'
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, Tooltip, Legend } from 'recharts'
 import Title from '../title/title.component'
 
-// Generate Sales Data
-function createData(time, amount) {
-  return { time, amount }
-}
-
-const data = [
-  createData('Jan', 1.50),
-  createData('Fev', 2.50),
-  createData('Março', 2.56),
-  createData('Abril', 3.60),
-  createData('Maio', 3.58)
-
-]
-
-export default function Chart() {
+export default function Chart({ products }) {
   const theme = useTheme()
 
   return (
@@ -25,7 +11,7 @@ export default function Chart() {
       <Title>Histórico</Title>
       <ResponsiveContainer>
         <LineChart
-          data={data}
+          data={products}
           margin={{
             top: 16,
             right: 16,
@@ -33,7 +19,7 @@ export default function Chart() {
             left: 24
           }}
         >
-          <XAxis dataKey="time" stroke={theme.palette.text.secondary} />
+          <XAxis dataKey="tempo" stroke={theme.palette.text.secondary} />
           <YAxis stroke={theme.palette.text.secondary}>
             <Label
               angle={270}
@@ -43,7 +29,10 @@ export default function Chart() {
               Preços (R$)
             </Label>
           </YAxis>
-          <Line type="monotone" dataKey="amount" stroke={theme.palette.primary.main} dot={false} />
+          <Tooltip/>
+          <Legend />
+          <Line type="monotone" dataKey="valor" stroke={theme.palette.primary.main} activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="distkm" stroke="#82ca9d" activeDot={{ r: 8 }}/>
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>

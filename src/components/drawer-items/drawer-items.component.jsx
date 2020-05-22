@@ -24,16 +24,16 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function FuelList(props) {
+export default function DrawerItems(props) {
   const classes = useStyles()
   const [selectedIndex, setSelectedIndex] = React.useState(0)
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index)
   }
-  const handleFuelListItemClick = (event, index) => {
+  const handleFuelListItemClick = (event, index, type) => {
     setSelectedIndex(index)
-    props.onclick(index)
+    props.onclick(type)
   }
 
   return (
@@ -43,7 +43,7 @@ export default function FuelList(props) {
         button
         selected={selectedIndex === 0}
         onClick={
-          (event) => handleFuelListItemClick(event, 0)
+          (event) => handleFuelListItemClick(event, 0, 'gasolina')
         }
       >
         <ListItemIcon>
@@ -54,7 +54,7 @@ export default function FuelList(props) {
       <ListItem
         button
         selected={selectedIndex === 1}
-        onClick={(event) => handleFuelListItemClick(event, 1)}
+        onClick={(event) => handleFuelListItemClick(event, 1, 'etanol')}
       >
         <ListItemIcon>
           <LocalGas style={{ fill: 'green' }} />
@@ -64,13 +64,16 @@ export default function FuelList(props) {
       <ListItem
         button
         selected={selectedIndex === 2}
-        onClick={(event) => handleFuelListItemClick(event, 2)}
+        onClick={(event) => handleFuelListItemClick(event, 2, 'diesel')}
       >
         <ListItemIcon>
           <LocalGas style={{ fill: 'yellow' }}/>
         </ListItemIcon>
         <ListItemText primary="Diesel" />
       </ListItem>
+
+      <Divider className={classes.dividerSpace} />
+
       <ListItem
         button
         selected={selectedIndex === 3}
@@ -91,8 +94,6 @@ export default function FuelList(props) {
         </ListItemIcon>
         <ListItemText primary="Downloads" />
       </ListItem>
-
-      <Divider className={classes.dividerSpace} />
 
       <ListItem button>
         <ListItemIcon>
@@ -117,6 +118,6 @@ export default function FuelList(props) {
   )
 }
 
-FuelList.propTypes = {
+DrawerItems.propTypes = {
   onclick: PropTypes.func
 }
