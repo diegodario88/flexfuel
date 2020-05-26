@@ -1,7 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
@@ -17,100 +16,10 @@ import Skeleton from '@material-ui/lab/Skeleton'
 import ListItems from '../drawer-items/drawer-items.component'
 import PropTypes from 'prop-types'
 import Dashboard from '../dashboard/dashboard.component'
+import Flex from '../flex/flex.component'
 import Api from '../../services/api'
 import isEmpty from '../../utils/object-check'
-
-const drawerWidth = 200
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex'
-  },
-  toolbar: {
-    paddingRight: 24 // keep right padding when drawer closed
-  },
-  toolbarIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...theme.mixins.toolbar
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  menuButton: {
-    marginRight: 36
-  },
-  menuButtonHidden: {
-    display: 'none'
-  },
-  title: {
-    flexGrow: 1
-  },
-  drawerPaper: {
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  drawerPaperClose: {
-    overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    }),
-    width: theme.spacing(7),
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9)
-    }
-  },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto'
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column'
-  },
-  container: {
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(4)
-  },
-  fixedMainHeight: {
-    height: 295
-  },
-  fixedHeight: {
-    height: 240,
-    [theme.breakpoints.up('md')]: {
-      height: 295
-    }
-  },
-  salesContext: {
-    flex: 1,
-    height: 100
-  }
-}))
-
+import { useStyles } from '../../assets/styles/styles'
 export default function DrawerComponent(props) {
   const classes = useStyles()
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
@@ -244,9 +153,10 @@ export default function DrawerComponent(props) {
             }
           </Route>
 
-          {/* alternar quem vai ser exibido aqui */}
-          {/* outro component */}
-          {/* outro component */}
+          <Route path='/charts'>
+            <Flex data={currentFuel} />
+          </Route>
+
         </Switch>
       </main>
     </div>
