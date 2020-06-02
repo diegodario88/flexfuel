@@ -84,6 +84,12 @@ export const useStyles = makeStyles((theme) => ({
       height: 295
     }
   },
+  fixedHeightFlex: {
+    height: 300,
+    [theme.breakpoints.up('md')]: {
+      height: 400
+    }
+  },
   salesContext: {
     flex: 1,
     height: 100
