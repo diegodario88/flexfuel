@@ -40,7 +40,7 @@ export default function DrawerItems(props) {
   return (
     <div className={classes.root}>
       <Divider />
-      <Link to='/'>
+      <Link to='/' style={{ color: 'inherit', textDecoration: 'inherit' }}>
         <ListItem
           button
           selected={selectedIndex === 0}
@@ -77,7 +77,7 @@ export default function DrawerItems(props) {
 
       <Divider className={classes.dividerSpace} />
 
-      <Link to='/charts'>
+      <Link to='/charts' style={{ color: 'inherit', textDecoration: 'inherit' }}>
         <ListItem
           button
           selected={selectedIndex === 3}
@@ -90,7 +90,7 @@ export default function DrawerItems(props) {
         </ListItem>
       </Link>
 
-      <Link to='/downloads'>
+      <Link to='/downloads' style={{ color: 'inherit', textDecoration: 'inherit' }}>
         <ListItem
           button
           selected={selectedIndex === 4}
@@ -103,7 +103,7 @@ export default function DrawerItems(props) {
         </ListItem>
       </Link>
 
-      <Link to='/code'>
+      <Link to='/code' style={{ color: 'inherit', textDecoration: 'inherit' }}>
         <ListItem
           button
           selected={selectedIndex === 5}
@@ -116,7 +116,7 @@ export default function DrawerItems(props) {
         </ListItem>
       </Link>
 
-      <Link to='contact'>
+      <Link to='contact' style={{ color: 'inherit', textDecoration: 'inherit' }}>
         <ListItem
           button
           selected={selectedIndex === 6}
@@ -129,7 +129,7 @@ export default function DrawerItems(props) {
         </ListItem>
       </Link>
 
-      <Link to='/info'>
+      <Link to='/info' style={{ color: 'inherit', textDecoration: 'inherit' }}>
         <ListItem
           button
           selected={selectedIndex === 7}
