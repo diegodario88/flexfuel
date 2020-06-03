@@ -1,6 +1,7 @@
 import React from 'react'
 import { useTheme } from '@material-ui/core/styles'
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, Tooltip, Legend } from 'recharts'
+import PropTypes from 'prop-types'
 import Title from '../title/title.component'
 
 export default function Chart({ products }) {
@@ -37,4 +38,8 @@ export default function Chart({ products }) {
       </ResponsiveContainer>
     </React.Fragment>
   )
+}
+
+Chart.propTypes = {
+  products: PropTypes.array
 }

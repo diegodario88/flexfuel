@@ -14,6 +14,7 @@ import {
   ComposedChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts'
 import Title from '../title/title.component'
+import { getAvg, checkBestFuel } from '../../utils/fuel'
 
 const data = [
   {
@@ -24,7 +25,8 @@ const data = [
   }
 ]
 
-export default function Flex({ products }) {
+export default function Flex({ fuels: { etanolSales, gasolineSales } }) {
+  console.log(etanolSales, gasolineSales)
   const classes = useStyles()
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeightFlex)

@@ -5,25 +5,21 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import Skeleton from '@material-ui/lab/Skeleton'
 import ListItems from '../drawer-items/drawer-items.component'
 import PropTypes from 'prop-types'
 import Dashboard from '../dashboard/dashboard.component'
+import Loading from '../loading/loading.component'
 import Flex from '../flex/flex.component'
 import Api from '../../services/api'
 import isEmpty from '../../utils/object-check'
 import { useStyles } from '../../assets/styles/styles'
-export default function DrawerComponent(props) {
+
+export default function DrawerComponent() {
   const classes = useStyles()
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
-  const fixedMainHeightPaper = clsx(classes.paper, classes.fixedMainHeight)
 
   const [gasolineSales, setGasolineSales] = React.useState([])
   const [etanolSales, setEtanolSales] = React.useState([])
@@ -101,62 +97,16 @@ export default function DrawerComponent(props) {
             {
               !isEmpty(currentFuel)
                 ? (<Dashboard products={currentFuel} />)
-                : (
-                  <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
-
-                      <Grid item xs={12} md={4} lg={3}>
-                        <Paper className={fixedMainHeightPaper}>
-                          <React.Fragment>
-                            <Skeleton animation="wave" height={10} width="80%" style={{ marginBottom: 6 }} />
-                            <Skeleton animation="wave" height={10} width="40%" />
-                            <Skeleton animation="wave" height={10} width="100%" className={classes.salesContext} />
-                            <div>
-                              <Skeleton animation="wave" variant="rect" className={classes.salesContext} />
-                              <Skeleton animation="wave" height={10} width="80%" style={{ marginTop: 6 }} />
-                              <Skeleton animation="wave" height={10} width="40%" />
-                            </div>
-                          </React.Fragment>
-                        </Paper>
-                      </Grid>
-                      <Grid item xs={12} md={8} lg={9}>
-                        <Paper className={fixedHeightPaper}>
-                          <React.Fragment>
-                            <Skeleton animation="wave" height={10} width="80%" style={{ marginBottom: 6 }} />
-                            <Skeleton animation="wave" height={10} width="40%" />
-                            <Skeleton animation="wave" height={10} width="100%" className={classes.salesContext} />
-                            <div>
-                              <Skeleton animation="wave" variant="rect" className={classes.salesContext} />
-                              <Skeleton animation="wave" height={10} width="80%" style={{ marginTop: 6 }} />
-                              <Skeleton animation="wave" height={10} width="40%" />
-                            </div>
-                          </React.Fragment>
-                        </Paper>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Paper className={classes.paper}>
-                          <React.Fragment>
-                            <Skeleton animation="wave" height={10} width="80%" style={{ marginBottom: 6 }} />
-                            <Skeleton animation="wave" height={10} width="40%" />
-                            <Skeleton animation="wave" height={80} width="100%" className={classes.salesContext} />
-                            <div>
-                              <Skeleton animation="wave" variant="rect" className={classes.salesContext} />
-                              <Skeleton animation="wave" height={10} width="80%" style={{ marginTop: 6 }} />
-                              <Skeleton animation="wave" height={10} width="40%" />
-                            </div>
-                          </React.Fragment>
-                        </Paper>
-                      </Grid>
-                    </Grid>
-                  </Container>
-                )
+                : (<Loading />)
             }
           </Route>
-
-          <Route path='/charts'>
-            <Flex data={currentFuel} />
+          <Route path='/flex'>
+            {
+              !isEmpty(etanolSales && gasolineSales)
+                ? (<Flex fuels={{ etanolSales, gasolineSales }} />)
+                : (<Loading />)
+            }
           </Route>
-
         </Switch>
       </main>
     </div>

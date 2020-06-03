@@ -77,7 +77,7 @@ export default function DrawerItems(props) {
 
       <Divider className={classes.dividerSpace} />
 
-      <Link to='/charts' style={{ color: 'inherit', textDecoration: 'inherit' }}>
+      <Link to='/flex' style={{ color: 'inherit', textDecoration: 'inherit' }}>
         <ListItem
           button
           selected={selectedIndex === 3}
@@ -86,7 +86,7 @@ export default function DrawerItems(props) {
           <ListItemIcon>
             <BarChartIcon />
           </ListItemIcon>
-          <ListItemText primary="Gráficos" />
+          <ListItemText primary="Flex" />
         </ListItem>
       </Link>
 

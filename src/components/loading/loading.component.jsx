@@ -6,14 +6,14 @@ import Paper from '@material-ui/core/Paper'
 import Skeleton from '@material-ui/lab/Skeleton'
 import clsx from 'clsx'
 
-export default function LoadindComponent(props) {
+export default function LoadingComponent() {
   const classes = useStyles()
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
   const fixedMainHeightPaper = clsx(classes.paper, classes.fixedMainHeight)
+
   return (
     <Container maxWidth="lg" className={classes.container}>
       <Grid container spacing={3}>
-
         <Grid item xs={12} md={4} lg={3}>
           <Paper className={fixedMainHeightPaper}>
             <React.Fragment>
