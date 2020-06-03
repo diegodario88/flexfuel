@@ -1,7 +1,7 @@
 const sum = (acc, { valor }) => acc + (+valor)
 const divide = (val1, val2) => (+val1) / (+val2)
 
-export const getAvg = (produtos) => (
+export const getAvg = ({ produtos }) => (
   produtos.reduce(sum, 0) / produtos.length
 ).toFixed(2)
 

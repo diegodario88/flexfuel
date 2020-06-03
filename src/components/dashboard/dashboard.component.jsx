@@ -17,13 +17,13 @@ import {
   getFirstBrandName, getSecondBrandName, removeSpace
 } from '../../utils/string-utils'
 
-export default function Dashboard(props) {
+export default function Dashboard({ fuels }) {
   const classes = useStyles()
 
   const {
     datahora, valor, desc,
     estabelecimento: { nm_fan, nm_emp, tp_logr, nm_logr, nr_logr, mun, uf }
-  } = props.products[0]
+  } = fuels.produtos[0]
 
   const stationAddress = `${tp_logr} ${nm_logr}, ${nr_logr} ${mun}-${uf}`
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
@@ -46,12 +46,12 @@ export default function Dashboard(props) {
         </Grid>
         <Grid item xs={12} md={8} lg={9}>
           <Paper className={fixedHeightPaper}>
-            <Chart products={props.products} />
+            <Chart products={fuels.produtos} />
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <TablePrice data={props.products} />
+            <TablePrice data={fuels.produtos} />
           </Paper>
         </Grid>
       </Grid>
@@ -63,5 +63,5 @@ export default function Dashboard(props) {
 }
 
 Dashboard.propTypes = {
-  products: PropTypes.array
+  fuels: PropTypes.object
 }

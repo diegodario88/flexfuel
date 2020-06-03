@@ -16,18 +16,17 @@ import {
 import Title from '../title/title.component'
 import { getAvg, checkBestFuel } from '../../utils/fuel'
 
-const data = [
-  {
-    name: 'Etanol', menor: 2.55, maior: 2.79, media: 2.65
-  },
-  {
-    name: 'Gasolina', menor: 3.83, maior: 4.18, media: 3.98
-  }
-]
-
-export default function Flex({ fuels: { etanolSales, gasolineSales } }) {
-  console.log(etanolSales, gasolineSales)
+export default function Flex({ etanol, gasoline }) {
   const classes = useStyles()
+
+  const data = [
+    {
+      name: 'Etanol', menor: etanol.precos.min, maior: etanol.precos.max, media: getAvg(etanol)
+    },
+    {
+      name: 'Gasolina', menor: gasoline.precos.min, maior: gasoline.precos.max, media: getAvg(gasoline)
+    }
+  ]
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeightFlex)
 
@@ -50,7 +49,7 @@ export default function Flex({ fuels: { etanolSales, gasolineSales } }) {
               >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
-                <YAxis dataKey="media"/>
+                <YAxis dataKey="maior"/>
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="menor" fill="#8884d8" />
@@ -63,10 +62,10 @@ export default function Flex({ fuels: { etanolSales, gasolineSales } }) {
           <Paper className={fixedHeightPaper}>
             <Title> Qual compensa? </Title>
             <Alert severity="success" color="info">
-            É mais vantajoso abastecer com {data[0].name}
+            É mais vantajoso abastecer com {checkBestFuel(getAvg(etanol), getAvg(gasoline))}
             </Alert>
             <Typography align="justify" variant="body1" gutterBottom>
-  De acordo com os menores valores na sua região.
+  De acordo com a média dos melhores valores na sua região.
             </Typography>
             <Typography align="justify" variant="body2" gutterBottom>
   Como o etanol precisa ser queimado cerca de 30% mais que a gasolina para alcançar o mesmo desempenho,

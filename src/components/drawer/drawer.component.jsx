@@ -21,22 +21,28 @@ import { useStyles } from '../../assets/styles/styles'
 export default function DrawerComponent() {
   const classes = useStyles()
 
-  const [gasolineSales, setGasolineSales] = React.useState([])
-  const [etanolSales, setEtanolSales] = React.useState([])
-  const [dieselSales, setDieselSales] = React.useState([])
-  const [currentFuel, setCurrentFuel] = React.useState(gasolineSales)
   const [open, setOpen] = React.useState(false)
+  const [currentFuel, setCurrentFuel] = React.useState({})
+  const [fuels, setFuels] = React.useState({
+    gasoline: {},
+    etanol: {},
+    diesel: {}
+  })
 
   async function loadFuels() {
-    const [gasolina, etanol, diesel] = await Promise.all([
+    const [gasolina, etanol, oleoDiesel] = await Promise.all([
       Api.get('produtos?local=6gfjwck4g&valor_max=7.1&termo=gasolina'),
       Api.get('produtos?local=6gfjwck4g&valor_max=7.1&termo=etanol'),
       Api.get('produtos?local=6gfjwck4g&valor_max=7.1&termo=oleo diesel')
     ])
-    setCurrentFuel(gasolina.data.produtos)
-    setGasolineSales(gasolina.data.produtos)
-    setEtanolSales(etanol.data.produtos)
-    setDieselSales(diesel.data.produtos)
+
+    setCurrentFuel(gasolina.data)
+
+    setFuels({
+      gasoline: gasolina.data,
+      etanol: etanol.data,
+      diesel: oleoDiesel.data
+    })
   }
 
   React.useEffect(() => {
@@ -44,9 +50,9 @@ export default function DrawerComponent() {
   }, [])
 
   const handleFuelTypeSelected = (type) => ({
-    gasolina: () => setCurrentFuel(gasolineSales),
-    etanol: () => setCurrentFuel(etanolSales),
-    diesel: () => setCurrentFuel(dieselSales)
+    gasolina: () => setCurrentFuel(fuels.gasoline),
+    etanol: () => setCurrentFuel(fuels.etanol),
+    diesel: () => setCurrentFuel(fuels.diesel)
   }[type]() || 'Type not found')
 
   const handleDrawerOpen = () => {
@@ -96,14 +102,14 @@ export default function DrawerComponent() {
           <Route exact path='/'>
             {
               !isEmpty(currentFuel)
-                ? (<Dashboard products={currentFuel} />)
+                ? (<Dashboard fuels={currentFuel} />)
                 : (<Loading />)
             }
           </Route>
           <Route path='/flex'>
             {
-              !isEmpty(etanolSales && gasolineSales)
-                ? (<Flex fuels={{ etanolSales, gasolineSales }} />)
+              !isEmpty(fuels.etanol && fuels.gasoline)
+                ? (<Flex etanol={fuels.etanol} gasoline={fuels.gasoline} />)
                 : (<Loading />)
             }
           </Route>
